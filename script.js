@@ -15,13 +15,14 @@ $.getJSON("https://api.ipify.org?format=json", function (data) {
 });
 
 getdatabtn.addEventListener("click", () => {
-
+    document.querySelector(".loader").style.display = "block";
     let url = `https://ipinfo.io/${useripaddress}/geo?token=6370439e94bf29`;
     
     fetch(url).then((response) => {
         return response.json();
     }).then((jsonResponse) => {
         setdetails(jsonResponse);
+        document.querySelector(".loader").style.display = "none";
     }).catch((err) => {
         console.log(err);
     });
@@ -56,15 +57,14 @@ function setdetails(jsonResponse){
     document.querySelector(".time-cont>h2:nth-child(1)").innerHTML = `<strong>Time Zone:</strong> ${jsonResponse.timezone}`
     document.querySelector(".time-cont>h2:nth-child(2)").innerHTML = `<strong>Date And Time:</strong> ${yourdatetime}`
     document.querySelector(".time-cont>h2:nth-child(3)").innerHTML = `<strong>Pincode:</strong> ${jsonResponse.postal}`
-    document.querySelector(".time-cont>h2:nth-child(4)").innerHTML = `<strong>Message:</strong> ${1}`
     console.log(yourdatetime);
 
    //fetching postoffices from received pincode
     fetch(`https://api.postalpincode.in/pincode/${jsonResponse.postal}`).then((response) => {
         return response.json();
     }).then((postaljson) => {
+        document.querySelector(".time-cont>h2:nth-child(4)").innerHTML = `<strong>Message:</strong> ${postaljson[0].Message}`;
         postoffices = postaljson[0].PostOffice;
-        console.log(postoffices);
         document.querySelector(".searchbar").style.display ="block";
         printpostoffices(postoffices);
     }).catch((err) => {
