@@ -119,7 +119,7 @@ input[type="search"] {
     animation: rotation 1s linear infinite;
     position: fixed;
     top:50%;
-    left: 50%;
+    left: 45%;
 }
 
 @keyframes rotation {

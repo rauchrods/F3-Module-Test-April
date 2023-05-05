@@ -44,7 +44,7 @@ function setdetails(jsonResponse){
     document.querySelector(".region-cont>span:nth-child(1)").innerHTML = `<strong>City:</strong> ${jsonResponse.city}`;
     document.querySelector(".region-cont>span:nth-child(2)").innerHTML = `<strong>Region:</strong> ${jsonResponse.region}`;
     document.querySelector(".org-cont>span:nth-child(1)").innerHTML = `<strong>Organisation:</strong> ${jsonResponse.org}`;
-    document.querySelector(".org-cont>span:nth-child(2)").innerHTML = `<strong>Hostname:</strong> ${jsonResponse.org}`;
+    document.querySelector(".org-cont>span:nth-child(2)").innerHTML = `<strong>Hostname:</strong> ${jsonResponse.hostname}`;
 
     let myiframe = document.querySelector("iframe");
     myiframe.style.display = "block";
